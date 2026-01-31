@@ -126,6 +126,22 @@ def plot_both(s1, s2, rate):
   
 
 def main():
+    print("=" * 40)
+    print("🔬 VOICE ANALYSIS LAB")
+    print("=" * 40)
+    print("Record twice and compare your voice!")
+    
+    audio1, rate, width = record_audio("Recording 1: Speak NORMALLY")
+    stats1, text1 = analyze_audio(audio1, rate), transcribe(audio1, rate, width)
+    display_stats(stats1, text1, "Recording 1")
+    
+    input("\n🔄 Press Enter, then speak LOUDER or FASTER...")
+    audio2, rate, width = record_audio("Recording 2: CHANGE your voice")
+    stats2, text2 = analyze_audio(audio2, rate), transcribe(audio2, rate, width)
+    display_stats(stats2, text2, "Recording 2")
+    
+    compare(stats1, stats2)
+    plot_both(stats1, stats2, rate)
 
 
 
